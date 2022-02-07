@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -49,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin().usernameParameter("username").passwordParameter("password").loginProcessingUrl("/login").loginPage("/login").failureUrl("/login?error").defaultSuccessUrl("/singers").permitAll()
                 .and()
-                .logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout")
+                .logout().logoutUrl("/logout").logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET")).logoutSuccessUrl("/login?logout")
                 .and()
                 .csrf().csrfTokenRepository(repo());
     }
