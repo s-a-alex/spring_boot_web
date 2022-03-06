@@ -11,7 +11,7 @@
     <groupId>getphos.spring</groupId>
     <artifactId>spring_boot_web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>spring_boot_web</name>
     <description>Demo project for Spring Boot Web</description>
     <properties>

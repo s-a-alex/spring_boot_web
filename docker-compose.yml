@@ -1,0 +1,29 @@
+version: "3"
+services:
+  spring-boot-web:
+#    restart: always
+    container_name: spring-boot-web
+    build: ""
+    #      context: target
+    #      dockerfile: target/Dockerfile
+    #    image: boot-web:latest
+    stdin_open: true
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgresdb
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresdb:5432/test
+      - SPRING_DATASOURCE_USERNAME=alex
+      - SPRING_DATASOURCE_PASSWORD=12345
+#      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+  postgresdb:
+#    restart: always
+    container_name: postgresdb
+    image: postgres:13.1-alpine
+    environment:
+      POSTGRES_DB: "test"
+      POSTGRES_USER: "alex"
+      POSTGRES_PASSWORD: "12345"
+    ports:
+      - "5432:5432"
