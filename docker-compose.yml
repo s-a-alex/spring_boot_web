@@ -3,10 +3,10 @@ services:
   spring-boot-web:
 #    restart: always
     container_name: spring-boot-web
-    build: ""
-    #      context: target
-    #      dockerfile: target/Dockerfile
-    #    image: boot-web:latest
+    build:
+      context: ""
+      dockerfile: Dockerfile
+#    image: 020968/spring-boot-web:latest
     stdin_open: true
     ports:
       - "8080:8080"
@@ -26,4 +26,4 @@ services:
       POSTGRES_USER: "alex"
       POSTGRES_PASSWORD: "12345"
     ports:
-      - "5432:5432"
+      - "5431:5432"
